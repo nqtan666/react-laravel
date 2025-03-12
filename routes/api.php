@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/get', function () {
@@ -8,7 +9,10 @@ Route::get('/get', function () {
     ]);
 });
 
-\Illuminate\Support\Facades\Log::info(111111111111111111);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 Route::post('/signup', [App\Http\Controllers\Api\AuthController::class, 'signup']);
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
