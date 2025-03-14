@@ -1,11 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import DefaultLayout from './components/DefaultLayout';
 import GuestLayout from './components/GuestLayout';
-import Dashboard from './views/Dasbboard';
+import Dashboard from './views/Dashboard';
 import Login from './views/Login';
 import NotFound from './views/Notfound';
 import Signup from './views/Signup';
 import User from './views/User';
+import Category from './views/category/Category';
 const router = createBrowserRouter([
     {
         path: '/*',
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Dashboard />,
+            },
+            {
+                path: '/categories',
+                element: <Category />,
             },
         ],
     },

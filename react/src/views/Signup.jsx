@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '../axios-client';
+import { SIGNUP } from '../constants/api';
 import { useGlobalContext } from '../contexts/ContextProvider';
 
 const Signup = () => {
@@ -10,6 +11,7 @@ const Signup = () => {
     const passwordConfirmRef = useRef();
     const [errors, setErrors] = useState();
     const { setUser, setToken } = useGlobalContext();
+
     const onSubmit = (e) => {
         e.preventDefault();
         const payload = {
@@ -19,7 +21,7 @@ const Signup = () => {
             password_confirm: passwordConfirmRef.current.value,
         };
         axiosClient
-            .post('/signup', payload)
+            .post(SIGNUP, payload)
             .then(({ data }) => {
                 setUser(data.user);
                 setToken(data.token);
@@ -31,31 +33,47 @@ const Signup = () => {
                 }
             });
     };
+
     return (
-        <div className="login-signup-form animated fadeInDown">
-            <div className="form">
+        <div className="d-flex justify-content-center align-items-center min-vh-100 container">
+            <div className="card p-4 shadow-lg" style={{ maxWidth: '400px', width: '100%' }}>
+                <h2 className="mb-4 text-center">Signup for free</h2>
+                {errors && (
+                    <div className="alert alert-danger">
+                        {Object.values(errors).map((error, index) => (
+                            <p key={index} className="mb-1">
+                                {error}
+                            </p>
+                        ))}
+                    </div>
+                )}
                 <form onSubmit={onSubmit}>
-                    <h1 className="title">Signup for free</h1>
-                    {errors && (
-                        <div className="alert alert-danger">
-                            {Object.values(errors).map((error) => (
-                                <p key={error}>{error}</p>
-                            ))}
-                        </div>
-                    )}
-                    <input ref={nameRef} type="text" name="name" placeholder="Full Name" />
-                    <input ref={emailRef} type="email" name="email" placeholder="Email" />
-                    <input ref={passwordRef} type="password" name="password" placeholder="Password" />
-                    <input ref={passwordConfirmRef} type="password" name="password_confirm" placeholder="Password Confirmation" />
-                    <button className="btn btn-block" type="submit">
+                    <div className="mb-3">
+                        <label className="form-label">Full Name</label>
+                        <input ref={nameRef} type="text" className="form-control" placeholder="Enter your name" required />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Email</label>
+                        <input ref={emailRef} type="email" className="form-control" placeholder="Enter your email" required />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input ref={passwordRef} type="password" className="form-control" placeholder="Enter password" required />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Confirm Password</label>
+                        <input ref={passwordConfirmRef} type="password" className="form-control" placeholder="Confirm password" required />
+                    </div>
+                    <button className="btn btn-primary w-100" type="submit">
                         Signup
                     </button>
-                    <p className="message">
-                        Already Registered? <Link to="/login">Sign in</Link>
-                    </p>
                 </form>
+                <p className="mt-3 text-center">
+                    Already registered? <Link to="/login">Sign in</Link>
+                </p>
             </div>
         </div>
     );
 };
+
 export default Signup;

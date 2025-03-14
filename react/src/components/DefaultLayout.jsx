@@ -1,42 +1,33 @@
 import { useEffect } from 'react';
-import { Link, Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import axiosClient from '../axios-client';
+import { LOGOUT, USER } from '../constants/api';
 import { useGlobalContext } from '../contexts/ContextProvider';
+import Header from './default/Header';
+import Sidebar from './default/Sidebar';
 
 export default function DefaultLayout() {
     const { user, token, setToken, setUser } = useGlobalContext();
     if (!token) {
-        console.log('Redirect to login');
         return <Navigate to="/login" />;
     }
+    useEffect(() => {
+        axiosClient.get(USER).then(({ data }) => {
+            setUser(data);
+        });
+    }, []);
     const onLogout = (ev) => {
         ev.preventDefault();
-        axiosClient.post('/logout').then(() => {
+        axiosClient.post(LOGOUT).then(() => {
             setToken(null);
             setUser(null);
         });
     };
-    useEffect(() => {
-        axiosClient.get('/user').then(({ data }) => {
-            setUser(data);
-        });
-    }, []);
     return (
         <div id="defaultLayout">
-            <aside>
-                <Link to={'/dashboard'}>Dashboard</Link>
-                <Link to={'/users'}>Users</Link>
-            </aside>
+            <Sidebar />
             <div className="content">
-                <header>
-                    <div>Header</div>
-                    <div>
-                        {user.name}
-                        <a href="#" onClick={onLogout} className="btn-logout">
-                            Logout
-                        </a>
-                    </div>
-                </header>
+                <Header user={user} onLogout={onLogout} />
                 <main>
                     <Outlet />
                 </main>
