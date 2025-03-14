@@ -9,7 +9,7 @@ import Sidebar from './default/Sidebar';
 export default function DefaultLayout() {
     const { user, token, setToken, setUser } = useGlobalContext();
     if (!token) {
-        return <Navigate to="/login" />;
+        return <Navigate to="/admin/login" />;
     }
     useEffect(() => {
         axiosClient.get(USER).then(({ data }) => {

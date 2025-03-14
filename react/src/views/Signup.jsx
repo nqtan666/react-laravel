@@ -25,6 +25,7 @@ const Signup = () => {
             .then(({ data }) => {
                 setUser(data.user);
                 setToken(data.token);
+                window.location.href = 'admin';
             })
             .catch((error) => {
                 const { response } = error;
@@ -69,7 +70,7 @@ const Signup = () => {
                     </button>
                 </form>
                 <p className="mt-3 text-center">
-                    Already registered? <Link to="/login">Sign in</Link>
+                    Already registered? <Link to="/admin/login">Sign in</Link>
                 </p>
             </div>
         </div>

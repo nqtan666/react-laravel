@@ -68,7 +68,7 @@ const Login = () => {
                 </form>
 
                 <p className="mt-3 text-center">
-                    Not registered? <Link to="/signup">Create an account</Link>
+                    Not registered? <Link to="/admin/signup">Create an account</Link>
                 </p>
             </div>
         </div>

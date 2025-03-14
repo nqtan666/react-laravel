@@ -3,47 +3,47 @@ import DefaultLayout from './components/DefaultLayout';
 import GuestLayout from './components/GuestLayout';
 import Dashboard from './views/Dashboard';
 import Login from './views/Login';
-import NotFound from './views/Notfound';
+import News from './views/News/News';
 import Signup from './views/Signup';
 import User from './views/User';
 import Category from './views/category/Category';
 const router = createBrowserRouter([
     {
         path: '/*',
-        element: <NotFound />,
+        element: <News />,
     },
     {
-        path: '/',
+        path: '/admin',
         element: <DefaultLayout />,
         children: [
             {
-                path: '/',
-                element: <User />,
-            },
-            {
-                path: '/users',
-                element: <User />,
-            },
-            {
-                path: '/dashboard',
+                path: '/admin',
                 element: <Dashboard />,
             },
             {
-                path: '/categories',
+                path: '/admin/users',
+                element: <User />,
+            },
+            {
+                path: '/admin/dashboard',
+                element: <Dashboard />,
+            },
+            {
+                path: '/admin/categories',
                 element: <Category />,
             },
         ],
     },
     {
-        path: '/',
+        path: '/admin',
         element: <GuestLayout />,
         children: [
             {
-                path: '/login',
+                path: '/admin/login',
                 element: <Login />,
             },
             {
-                path: '/signup',
+                path: '/admin/signup',
                 element: <Signup />,
             },
         ],

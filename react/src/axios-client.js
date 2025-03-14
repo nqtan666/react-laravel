@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`, // VITE_API_BASE_URL là biến môi trường
+  baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
 });
 
 axiosClient.interceptors.request.use(
@@ -26,7 +26,7 @@ axiosClient.interceptors.response.use(
     if (response) {
       if (response.status === 401) {
         localStorage.removeItem("ACCESS_TOKEN");
-        window.location.href = "/login";
+        window.location.href = "admin/login";
       }
     }
     return Promise.reject(error);

@@ -13,9 +13,9 @@ export default function Sidebar() {
             <h4 className="mb-4 text-center">Admin Panel</h4>
             <hr></hr>
             <nav className="nav flex-column">
-                <SidebarLink to="/dashboard" text="Dashboard" />
-                <SidebarLink to="/users" text="Users" />
-                <SidebarLink to="/categories" text="Categories" />
+                <SidebarLink to="/admin/dashboard" text="Dashboard" />
+                <SidebarLink to="/admin/users" text="Users" />
+                <SidebarLink to="/admin/categories" text="Categories" />
             </nav>
         </aside>
     );
