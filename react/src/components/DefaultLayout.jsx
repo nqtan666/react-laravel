@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Link, Navigate, Outlet } from 'react-router-dom';
+import axiosClient from '../axios-client';
 import { useGlobalContext } from '../contexts/ContextProvider';
 
 export default function DefaultLayout() {
@@ -9,9 +11,16 @@ export default function DefaultLayout() {
     }
     const onLogout = (ev) => {
         ev.preventDefault();
-        setToken(null);
-        setUser(null);
+        axiosClient.post('/logout').then(() => {
+            setToken(null);
+            setUser(null);
+        });
     };
+    useEffect(() => {
+        axiosClient.get('/user').then(({ data }) => {
+            setUser(data);
+        });
+    }, []);
     return (
         <div id="defaultLayout">
             <aside>
