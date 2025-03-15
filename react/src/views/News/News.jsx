@@ -1,20 +1,20 @@
 const News = () => {
     return (
         <div className="container">
-            <header class="blog-header py-3">
-                <div class="row justify-content-between align-items-center flex-nowrap">
-                    <div class="col-4 pt-1">
-                        <a class="link-secondary" href="#">
+            <header className="blog-header py-3">
+                <div className="row justify-content-between align-items-center flex-nowrap">
+                    <div className="col-4 pt-1">
+                        <a className="link-secondary" href="#">
                             Subscribe
                         </a>
                     </div>
-                    <div class="col-4 text-center">
-                        <a class="blog-header-logo text-dark" href="#">
+                    <div className="col-4 text-center">
+                        <a className="blog-header-logo text-dark" href="#">
                             Large
                         </a>
                     </div>
-                    <div class="d-flex justify-content-end align-items-center col-4">
-                        <a class="link-secondary" href="#" aria-label="Search">
+                    <div className="d-flex justify-content-end align-items-center col-4">
+                        <a className="link-secondary" href="#" aria-label="Search">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="20"
@@ -24,7 +24,7 @@ const News = () => {
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
                                 stroke-width="2"
-                                class="mx-3"
+                                className="mx-3"
                                 role="img"
                                 viewBox="0 0 24 24"
                             >
@@ -33,48 +33,48 @@ const News = () => {
                                 <path d="M21 21l-5.2-5.2"></path>
                             </svg>
                         </a>
-                        <a class="btn btn-sm btn-outline-secondary" href="#">
+                        <a className="btn btn-sm btn-outline-secondary" href="#">
                             Sign up
                         </a>
                     </div>
                 </div>
             </header>
-            <div class="nav-scroller mb-2 py-1">
-                <nav class="nav d-flex justify-content-between">
-                    <a class="link-secondary p-2" href="#">
+            <div className="nav-scroller mb-2 py-1">
+                <nav className="nav d-flex justify-content-between">
+                    <a className="link-secondary p-2" href="#">
                         World
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         U.S.
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Technology
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Design
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Culture
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Business
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Politics
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Opinion
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Science
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Health
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Style
                     </a>
-                    <a class="link-secondary p-2" href="#">
+                    <a className="link-secondary p-2" href="#">
                         Travel
                     </a>
                 </nav>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\CorsMiddleware;
+use App\Http\Middleware\VerifyRecaptcha;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;

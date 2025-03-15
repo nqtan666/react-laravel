@@ -1,8 +1,8 @@
 const Dashboard = () => {
     return (
         <div>
-            <div class="table-responsive">
-                <table class="table-striped table-sm table">
+            <div className="table-responsive">
+                <table className="table-striped table-sm table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axiosClient from '../axios-client';
 import { SIGNUP } from '../constants/api';
 import { useGlobalContext } from '../contexts/ContextProvider';
-
+import ReCAPTCHA from "react-google-recaptcha";
 const Signup = () => {
     const nameRef = useRef();
     const emailRef = useRef();
@@ -11,6 +11,7 @@ const Signup = () => {
     const passwordConfirmRef = useRef();
     const [errors, setErrors] = useState();
     const { setUser, setToken } = useGlobalContext();
+    const [recaptchaToken, setRecaptchaToken] = useState(null);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -19,13 +20,14 @@ const Signup = () => {
             email: emailRef.current.value,
             password: passwordRef.current.value,
             password_confirm: passwordConfirmRef.current.value,
+            recaptcha_token: recaptchaToken,
         };
         axiosClient
             .post(SIGNUP, payload)
             .then(({ data }) => {
                 setUser(data.user);
                 setToken(data.token);
-                window.location.href = 'admin';
+                window.location.href = '/admin';
             })
             .catch((error) => {
                 const { response } = error;
@@ -65,6 +67,7 @@ const Signup = () => {
                         <label className="form-label">Confirm Password</label>
                         <input ref={passwordConfirmRef} type="password" className="form-control" placeholder="Confirm password" required />
                     </div>
+                    <ReCAPTCHA className='mb-3 form-control' sitekey="6LfuXPUqAAAAAN1QT90Ti0vN1BwwBA30VFQsdLuw" onChange={setRecaptchaToken} />
                     <button className="btn btn-primary w-100" type="submit">
                         Signup
                     </button>
